@@ -9,11 +9,9 @@
 
 - 🔭 I’m currently working on [SofttechGarage](https://softtech.com.tr)
 
-- 🌱 I’m currently learning **Blockchain Development, Metaverse Mobile Applications**
-
 - 👯 I’m looking to collaborate on [Softtech](https://softtech.com.tr)
 
-- 💬 Ask me about **Flutter, Android Development, React, Spring, NestJs,**
+- 💬 Ask me about **Android Development, Kotlin, Spring, NestJs,**
 
 - 📫 How to reach me **burhancabiroglu97@gmail.com**
 
