@@ -7,7 +7,7 @@
 
 <p align="left"> <a href="https://twitter.com/" target="blank"><img src="https://img.shields.io/twitter/follow/?logo=twitter&style=for-the-badge" alt="" /></a> </p>
 
-- 🔭 I’m currently working on [SofttechGarage](https://softtech.com.tr)
+- 🔭 I’m currently working on [Softtech](https://softtech.com.tr)
 
 - 👯 I’m looking to collaborate on [Softtech](https://softtech.com.tr)
 
