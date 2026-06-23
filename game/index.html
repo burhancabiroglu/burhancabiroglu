@@ -3,20 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Backend Circuit - Burhan Cabiroglu</title>
+    <title>AI Microservice Ops - Burhan Cabiroglu</title>
     <style>
       :root {
         color-scheme: dark;
-        --bg: #080d12;
-        --panel: #111922;
-        --panel-2: #162231;
+        --bg: #070b10;
+        --panel: #101822;
+        --panel-2: #142131;
         --text: #eef5ff;
-        --muted: #8fa3b8;
-        --line: #26364a;
-        --accent: #36d399;
+        --muted: #91a4b7;
+        --line: #26374c;
+        --green: #36d399;
         --blue: #58a6ff;
-        --red: #ff6b6b;
         --yellow: #ffd166;
+        --red: #ff6b6b;
+        --violet: #a78bfa;
       }
 
       * {
@@ -26,98 +27,107 @@
       body {
         margin: 0;
         min-height: 100vh;
-        background: radial-gradient(circle at 50% 0%, #132235 0, var(--bg) 58%);
+        background:
+          radial-gradient(circle at 25% 0%, rgba(88, 166, 255, 0.22), transparent 34%),
+          radial-gradient(circle at 82% 12%, rgba(54, 211, 153, 0.16), transparent 30%),
+          var(--bg);
         color: var(--text);
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
       main {
-        width: min(1120px, calc(100vw - 32px));
+        width: min(1220px, calc(100vw - 32px));
         margin: 0 auto;
-        padding: 28px 0;
+        padding: 24px 0;
       }
 
       header {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: 18px;
-        margin-bottom: 18px;
+        align-items: end;
+        margin-bottom: 16px;
       }
 
       h1 {
         margin: 0;
-        font-size: clamp(28px, 4vw, 52px);
+        font-size: clamp(30px, 4vw, 54px);
         line-height: 1;
         letter-spacing: 0;
       }
 
       .subtitle {
         margin: 10px 0 0;
+        max-width: 760px;
         color: var(--muted);
-        max-width: 720px;
-        line-height: 1.6;
+        line-height: 1.55;
       }
 
-      .actions {
+      .actions,
+      .toolbar {
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
+      }
+
+      .actions {
         justify-content: flex-end;
       }
 
       button {
+        min-height: 40px;
         border: 1px solid var(--line);
+        border-radius: 8px;
         background: var(--panel-2);
         color: var(--text);
-        border-radius: 8px;
-        padding: 10px 14px;
+        padding: 10px 13px;
         cursor: pointer;
-        font-weight: 700;
+        font-weight: 800;
       }
 
       button:hover {
         border-color: var(--blue);
       }
 
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
       .primary {
-        background: var(--accent);
-        color: #05110b;
-        border-color: var(--accent);
+        background: var(--green);
+        border-color: var(--green);
+        color: #04120d;
       }
 
       .layout {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 300px;
+        grid-template-columns: minmax(0, 1fr) 330px;
         gap: 16px;
       }
 
       canvas {
+        display: block;
         width: 100%;
         aspect-ratio: 16 / 10;
-        display: block;
-        background: #0b1118;
         border: 1px solid var(--line);
         border-radius: 8px;
+        background: #090f16;
       }
 
       aside {
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: color-mix(in srgb, var(--panel) 92%, transparent);
-        padding: 16px;
+        background: color-mix(in srgb, var(--panel) 94%, transparent);
+        padding: 15px;
       }
 
       .metric {
         display: grid;
         grid-template-columns: 1fr auto;
         gap: 12px;
-        padding: 12px 0;
+        padding: 10px 0;
         border-bottom: 1px solid var(--line);
-      }
-
-      .metric:last-child {
-        border-bottom: 0;
       }
 
       .metric span {
@@ -128,8 +138,32 @@
         font-size: 18px;
       }
 
+      .metric:last-of-type {
+        border-bottom: 0;
+      }
+
+      .incident {
+        margin: 14px 0;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #0b1118;
+      }
+
+      .incident b {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .incident p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+        font-size: 14px;
+      }
+
       .log {
-        min-height: 96px;
+        min-height: 116px;
         margin-top: 14px;
         padding: 12px;
         border-radius: 8px;
@@ -138,19 +172,19 @@
         font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
         font-size: 12px;
         line-height: 1.55;
+        white-space: pre-line;
       }
 
       footer {
-        margin-top: 16px;
+        margin-top: 14px;
         color: var(--muted);
         font-size: 14px;
       }
 
-      @media (max-width: 860px) {
+      @media (max-width: 900px) {
         header,
         .layout {
           grid-template-columns: 1fr;
-          display: grid;
         }
 
         .actions {
@@ -163,213 +197,365 @@
     <main>
       <header>
         <div>
-          <h1>Backend Circuit</h1>
+          <h1>AI Microservice Ops</h1>
           <p class="subtitle">
-            Route incoming events through API, queue, workers, and storage. Keep latency low, prevent queue overload,
-            and use the AI optimizer when the system starts to drift.
+            Keep a commerce platform alive while traffic, incidents, and AI workloads hit the system. Scale services,
+            resolve failures, and use AI autopilot before latency and errors take over.
           </p>
         </div>
         <div class="actions">
-          <button class="primary" id="start">Start</button>
-          <button id="optimizer">AI optimizer</button>
+          <button class="primary" id="start">Start simulation</button>
+          <button id="reset">Reset</button>
         </div>
       </header>
 
       <section class="layout">
-        <canvas id="game" width="960" height="600" aria-label="Backend routing mini-game"></canvas>
+        <div>
+          <canvas id="game" width="1080" height="675" aria-label="AI microservice operations game"></canvas>
+          <footer>
+            Click a service to select it. Scale the selected service, resolve incidents, or trigger AI autopilot.
+          </footer>
+        </div>
         <aside>
-          <div class="metric"><span>Processed</span><strong id="processed">0</strong></div>
-          <div class="metric"><span>Failed</span><strong id="failed">0</strong></div>
-          <div class="metric"><span>Latency</span><strong id="latency">12%</strong></div>
-          <div class="metric"><span>Queue pressure</span><strong id="pressure">0%</strong></div>
+          <div class="metric"><span>Uptime</span><strong id="uptime">100%</strong></div>
+          <div class="metric"><span>Latency</span><strong id="latency">42ms</strong></div>
+          <div class="metric"><span>Error rate</span><strong id="errors">0.4%</strong></div>
+          <div class="metric"><span>Cloud budget</span><strong id="budget">$100</strong></div>
           <div class="metric"><span>Score</span><strong id="score">0</strong></div>
-          <div class="log" id="log">System idle. Press Start, then click services to route packets.</div>
+
+          <div class="incident">
+            <b id="incidentTitle">No active incident</b>
+            <p id="incidentText">Start the simulation and keep the system stable.</p>
+          </div>
+
+          <div class="toolbar">
+            <button id="scale">Scale +1</button>
+            <button id="resolve">Resolve incident</button>
+            <button id="ai">AI autopilot</button>
+          </div>
+
+          <div class="log" id="log">System ready.</div>
         </aside>
       </section>
-
-      <footer>
-        A small profile game by Burhan Cabiroglu, inspired by distributed systems, RabbitMQ, observability, and backend reliability.
-      </footer>
     </main>
 
     <script>
       const canvas = document.getElementById("game");
       const ctx = canvas.getContext("2d");
       const ui = {
-        processed: document.getElementById("processed"),
-        failed: document.getElementById("failed"),
-        latency: document.getElementById("latency"),
-        pressure: document.getElementById("pressure"),
-        score: document.getElementById("score"),
-        log: document.getElementById("log"),
         start: document.getElementById("start"),
-        optimizer: document.getElementById("optimizer"),
+        reset: document.getElementById("reset"),
+        scale: document.getElementById("scale"),
+        resolve: document.getElementById("resolve"),
+        ai: document.getElementById("ai"),
+        uptime: document.getElementById("uptime"),
+        latency: document.getElementById("latency"),
+        errors: document.getElementById("errors"),
+        budget: document.getElementById("budget"),
+        score: document.getElementById("score"),
+        incidentTitle: document.getElementById("incidentTitle"),
+        incidentText: document.getElementById("incidentText"),
+        log: document.getElementById("log"),
       };
 
       const services = [
-        { id: "api", label: "API", x: 180, y: 180, color: "#58a6ff" },
-        { id: "queue", label: "RabbitMQ", x: 480, y: 180, color: "#ffb86b" },
-        { id: "worker", label: "Worker", x: 760, y: 180, color: "#36d399" },
-        { id: "db", label: "PostgreSQL", x: 480, y: 420, color: "#a78bfa" },
+        { id: "gateway", label: "API Gateway", x: 160, y: 160, load: 35, pods: 2, color: "#58a6ff" },
+        { id: "identity", label: "Identity", x: 390, y: 115, load: 28, pods: 1, color: "#a78bfa" },
+        { id: "catalog", label: "Catalog", x: 390, y: 265, load: 32, pods: 2, color: "#36d399" },
+        { id: "order", label: "Order", x: 625, y: 205, load: 45, pods: 2, color: "#ffd166" },
+        { id: "payment", label: "Payment", x: 835, y: 130, load: 30, pods: 1, color: "#ff8f70" },
+        { id: "ai", label: "AI Worker", x: 835, y: 320, load: 55, pods: 1, color: "#c084fc" },
+        { id: "queue", label: "RabbitMQ", x: 620, y: 430, load: 40, pods: 2, color: "#f59e0b" },
+        { id: "notify", label: "Notify", x: 390, y: 510, load: 26, pods: 1, color: "#22d3ee" },
       ];
 
-      const route = ["api", "queue", "worker", "db"];
-      let packets = [];
-      let running = false;
-      let lastSpawn = 0;
-      let processed = 0;
-      let failed = 0;
-      let latency = 12;
-      let pressure = 0;
-      let score = 0;
-      let selected = "api";
+      const edges = [
+        ["gateway", "identity"],
+        ["gateway", "catalog"],
+        ["catalog", "order"],
+        ["order", "payment"],
+        ["order", "queue"],
+        ["queue", "ai"],
+        ["queue", "notify"],
+      ];
 
-      function serviceById(id) {
+      const incidents = [
+        {
+          title: "AI job backlog",
+          text: "Recommendation jobs are backing up. Scale AI Worker or use AI autopilot.",
+          target: "ai",
+          pressure: 26,
+        },
+        {
+          title: "Payment timeout spike",
+          text: "Payment calls are timing out. Resolve the incident before checkout errors rise.",
+          target: "payment",
+          pressure: 30,
+        },
+        {
+          title: "Order event storm",
+          text: "Order events are flooding RabbitMQ. Scale RabbitMQ or resolve the incident.",
+          target: "queue",
+          pressure: 32,
+        },
+        {
+          title: "Gateway traffic surge",
+          text: "A campaign doubled traffic. Scale the API Gateway quickly.",
+          target: "gateway",
+          pressure: 28,
+        },
+      ];
+
+      let running = false;
+      let selected = "order";
+      let activeIncident = null;
+      let incidentCooldown = 0;
+      let uptime = 100;
+      let latency = 42;
+      let errors = 0.4;
+      let budget = 100;
+      let score = 0;
+      let particles = [];
+
+      function byId(id) {
         return services.find((service) => service.id === id);
       }
 
-      function spawnPacket(time) {
-        const first = serviceById("api");
-        packets.push({
-          x: 44,
-          y: first.y,
-          target: 0,
-          speed: 1.2 + Math.random() * 1.5,
-          age: 0,
-          color: Math.random() > 0.2 ? "#36d399" : "#ffd166",
+      function resetState() {
+        running = false;
+        selected = "order";
+        activeIncident = null;
+        incidentCooldown = 0;
+        uptime = 100;
+        latency = 42;
+        errors = 0.4;
+        budget = 100;
+        score = 0;
+        particles = [];
+        services.forEach((service, index) => {
+          service.load = [35, 28, 32, 45, 30, 55, 40, 26][index];
+          service.pods = [2, 1, 2, 2, 1, 1, 2, 1][index];
         });
-        lastSpawn = time;
+        ui.start.textContent = "Start simulation";
+        ui.log.textContent = "System ready.";
+        render();
+        updateUi();
       }
 
-      function updateMetrics() {
-        pressure = Math.min(100, Math.round((packets.length / 18) * 100));
-        latency = Math.min(100, Math.max(4, Math.round(latency + pressure * 0.006 - processed * 0.002)));
-        ui.processed.textContent = processed;
-        ui.failed.textContent = failed;
-        ui.latency.textContent = `${latency}%`;
-        ui.pressure.textContent = `${pressure}%`;
-        ui.score.textContent = score;
+      function spawnTraffic() {
+        const edge = edges[Math.floor(Math.random() * edges.length)];
+        const from = byId(edge[0]);
+        const to = byId(edge[1]);
+        particles.push({
+          x: from.x,
+          y: from.y,
+          to,
+          progress: 0,
+          speed: 0.012 + Math.random() * 0.014,
+          color: Math.random() > 0.22 ? "#36d399" : "#ffd166",
+        });
       }
 
-      function drawService(service) {
-        const active = service.id === selected;
-        ctx.beginPath();
-        ctx.arc(service.x, service.y, active ? 50 : 44, 0, Math.PI * 2);
-        ctx.fillStyle = "#101923";
-        ctx.fill();
-        ctx.lineWidth = active ? 4 : 2;
-        ctx.strokeStyle = active ? service.color : "#26364a";
-        ctx.stroke();
-        ctx.fillStyle = service.color;
-        ctx.font = "700 16px Inter, sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText(service.label, service.x, service.y + 6);
-      }
-
-      function drawLinks() {
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = "#26364a";
-        ctx.setLineDash([8, 12]);
-        const points = route.map(serviceById);
-        for (let i = 0; i < points.length - 1; i += 1) {
-          ctx.beginPath();
-          ctx.moveTo(points[i].x, points[i].y);
-          ctx.lineTo(points[i + 1].x, points[i + 1].y);
-          ctx.stroke();
+      function maybeIncident() {
+        if (activeIncident || incidentCooldown > 0) return;
+        if (Math.random() < 0.012) {
+          activeIncident = incidents[Math.floor(Math.random() * incidents.length)];
+          byId(activeIncident.target).load += activeIncident.pressure;
+          incidentCooldown = 420;
+          ui.log.textContent = `Incident detected: ${activeIncident.title}\nTarget service: ${byId(activeIncident.target).label}`;
         }
+      }
+
+      function updateSystem() {
+        if (!running) return;
+
+        if (Math.random() < 0.32) spawnTraffic();
+        maybeIncident();
+        incidentCooldown = Math.max(0, incidentCooldown - 1);
+
+        services.forEach((service) => {
+          const capacity = service.pods * 34;
+          const overload = Math.max(0, service.load - capacity);
+          service.load += Math.random() * 1.6 - 0.55;
+          service.load = Math.max(8, Math.min(100, service.load));
+          latency += overload * 0.045;
+          errors += overload * 0.004;
+        });
+
+        const averageLoad = services.reduce((sum, service) => sum + service.load, 0) / services.length;
+        latency += averageLoad * 0.006 - 0.35;
+        errors += averageLoad * 0.00045 - 0.018;
+        budget -= services.reduce((sum, service) => sum + service.pods, 0) * 0.002;
+
+        latency = Math.max(24, Math.min(560, latency));
+        errors = Math.max(0.1, Math.min(28, errors));
+        uptime = Math.max(0, 100 - errors * 1.6 - Math.max(0, latency - 160) * 0.02);
+
+        if (uptime > 96 && latency < 130 && errors < 2.5) score += 2;
+        if (uptime < 82 || budget <= 0) score = Math.max(0, score - 2);
+      }
+
+      function updateParticles() {
+        particles = particles.filter((particle) => {
+          particle.progress += particle.speed;
+          return particle.progress < 1;
+        });
+      }
+
+      function drawEdges() {
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "#25374d";
+        ctx.setLineDash([8, 12]);
+        edges.forEach(([fromId, toId]) => {
+          const from = byId(fromId);
+          const to = byId(toId);
+          ctx.beginPath();
+          ctx.moveTo(from.x, from.y);
+          ctx.lineTo(to.x, to.y);
+          ctx.stroke();
+        });
         ctx.setLineDash([]);
       }
 
-      function drawPacket(packet) {
+      function drawService(service) {
+        const selectedService = service.id === selected;
+        const capacity = service.pods * 34;
+        const health = Math.max(0, Math.min(1, 1 - Math.max(0, service.load - capacity) / 65));
+        const radius = selectedService ? 57 : 50;
+
         ctx.beginPath();
-        ctx.arc(packet.x, packet.y, 8, 0, Math.PI * 2);
-        ctx.fillStyle = packet.color;
-        ctx.shadowColor = packet.color;
-        ctx.shadowBlur = 16;
+        ctx.arc(service.x, service.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = "#101923";
         ctx.fill();
-        ctx.shadowBlur = 0;
+        ctx.lineWidth = selectedService ? 5 : 3;
+        ctx.strokeStyle = health > 0.65 ? service.color : health > 0.35 ? "#ffd166" : "#ff6b6b";
+        ctx.stroke();
+
+        ctx.fillStyle = service.color;
+        ctx.font = "800 15px Inter, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(service.label, service.x, service.y - 5);
+
+        ctx.fillStyle = "#91a4b7";
+        ctx.font = "700 12px Inter, sans-serif";
+        ctx.fillText(`${Math.round(service.load)}% load | ${service.pods} pods`, service.x, service.y + 17);
       }
 
-      function tick(time) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#0b1118";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      function drawParticles() {
+        particles.forEach((particle) => {
+          const fromX = particle.x;
+          const fromY = particle.y;
+          const x = fromX + (particle.to.x - fromX) * particle.progress;
+          const y = fromY + (particle.to.y - fromY) * particle.progress;
+          ctx.beginPath();
+          ctx.arc(x, y, 7, 0, Math.PI * 2);
+          ctx.fillStyle = particle.color;
+          ctx.shadowColor = particle.color;
+          ctx.shadowBlur = 14;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        });
+      }
 
-        drawLinks();
+      function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#090f16";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        drawEdges();
+        drawParticles();
         services.forEach(drawService);
 
-        if (running && time - lastSpawn > Math.max(360, 980 - score * 3)) {
-          spawnPacket(time);
-        }
+        ctx.fillStyle = "#91a4b7";
+        ctx.font = "700 13px Inter, sans-serif";
+        ctx.textAlign = "left";
+        ctx.fillText("Scenario: AI-assisted commerce microservices platform", 28, 38);
+      }
 
-        packets = packets.filter((packet) => {
-          packet.age += 1;
-          const target = serviceById(route[packet.target]);
-          const dx = target.x - packet.x;
-          const dy = target.y - packet.y;
-          const distance = Math.hypot(dx, dy);
-          const move = packet.speed + (selected === target.id ? 1.3 : 0);
+      function updateUi() {
+        ui.uptime.textContent = `${uptime.toFixed(1)}%`;
+        ui.latency.textContent = `${Math.round(latency)}ms`;
+        ui.errors.textContent = `${errors.toFixed(1)}%`;
+        ui.budget.textContent = `$${Math.max(0, budget).toFixed(0)}`;
+        ui.score.textContent = Math.round(score);
+        ui.incidentTitle.textContent = activeIncident ? activeIncident.title : "No active incident";
+        ui.incidentText.textContent = activeIncident ? activeIncident.text : "Keep load balanced and budget under control.";
+        ui.resolve.disabled = !activeIncident;
+        ui.ai.disabled = budget < 12;
+      }
 
-          if (distance < 12) {
-            packet.target += 1;
-            if (packet.target >= route.length) {
-              processed += 1;
-              score += Math.max(5, 30 - Math.floor(latency / 5));
-              latency = Math.max(4, latency - 2);
-              return false;
-            }
-          } else {
-            packet.x += (dx / distance) * move;
-            packet.y += (dy / distance) * move;
-          }
-
-          if (packet.age > 780 || pressure > 96) {
-            failed += 1;
-            latency = Math.min(100, latency + 8);
-            return false;
-          }
-
-          drawPacket(packet);
-          return true;
-        });
-
-        updateMetrics();
-
-        if (running) {
-          requestAnimationFrame(tick);
-        }
+      function loop() {
+        updateSystem();
+        updateParticles();
+        render();
+        updateUi();
+        if (running) requestAnimationFrame(loop);
       }
 
       canvas.addEventListener("click", (event) => {
         const rect = canvas.getBoundingClientRect();
         const x = ((event.clientX - rect.left) / rect.width) * canvas.width;
         const y = ((event.clientY - rect.top) / rect.height) * canvas.height;
-        const service = services.find((item) => Math.hypot(item.x - x, item.y - y) < 58);
+        const service = services.find((item) => Math.hypot(item.x - x, item.y - y) < 62);
         if (service) {
           selected = service.id;
-          ui.log.textContent = `Routing focus shifted to ${service.label}.`;
+          ui.log.textContent = `Selected ${service.label}.\nPods: ${service.pods}, load: ${Math.round(service.load)}%`;
+          render();
         }
       });
 
       ui.start.addEventListener("click", () => {
         running = !running;
-        ui.start.textContent = running ? "Pause" : "Start";
-        ui.log.textContent = running ? "Events are flowing. Click services to reduce local congestion." : "System paused.";
-        if (running) requestAnimationFrame(tick);
+        ui.start.textContent = running ? "Pause" : "Resume";
+        ui.log.textContent = running ? "Simulation running. Watch latency, errors, and budget." : "Simulation paused.";
+        if (running) requestAnimationFrame(loop);
       });
 
-      ui.optimizer.addEventListener("click", () => {
-        latency = Math.max(4, latency - 18);
-        packets.forEach((packet) => {
-          packet.speed += 0.8;
-        });
-        ui.log.textContent = "AI optimizer applied: queue pressure reduced and packet routing accelerated.";
-        updateMetrics();
+      ui.reset.addEventListener("click", resetState);
+
+      ui.scale.addEventListener("click", () => {
+        const service = byId(selected);
+        if (budget < 5) {
+          ui.log.textContent = "Not enough budget to scale.";
+          return;
+        }
+        service.pods += 1;
+        service.load = Math.max(8, service.load - 18);
+        budget -= 5;
+        score += 8;
+        ui.log.textContent = `Scaled ${service.label} to ${service.pods} pods.`;
+        updateUi();
+        render();
       });
 
-      updateMetrics();
-      requestAnimationFrame(tick);
+      ui.resolve.addEventListener("click", () => {
+        if (!activeIncident) return;
+        const service = byId(activeIncident.target);
+        service.load = Math.max(12, service.load - activeIncident.pressure - 12);
+        latency = Math.max(24, latency - 28);
+        errors = Math.max(0.1, errors - 1.8);
+        score += 35;
+        ui.log.textContent = `Resolved incident: ${activeIncident.title}.\nCorrelation IDs checked, queue pressure reduced.`;
+        activeIncident = null;
+        updateUi();
+        render();
+      });
+
+      ui.ai.addEventListener("click", () => {
+        if (budget < 12) return;
+        budget -= 12;
+        const risky = [...services].sort((a, b) => b.load / b.pods - a.load / a.pods)[0];
+        risky.pods += 1;
+        risky.load = Math.max(10, risky.load - 24);
+        latency = Math.max(24, latency - 34);
+        errors = Math.max(0.1, errors - 2.2);
+        if (activeIncident && activeIncident.target === risky.id) activeIncident = null;
+        score += 50;
+        ui.log.textContent = `AI autopilot scaled ${risky.label}, reduced latency, and prioritized the hottest service.`;
+        updateUi();
+        render();
+      });
+
+      resetState();
     </script>
   </body>
 </html>
-
