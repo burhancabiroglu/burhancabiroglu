@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Backend Circuit - Burhan Cabiroglu</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #080d12;
+        --panel: #111922;
+        --panel-2: #162231;
+        --text: #eef5ff;
+        --muted: #8fa3b8;
+        --line: #26364a;
+        --accent: #36d399;
+        --blue: #58a6ff;
+        --red: #ff6b6b;
+        --yellow: #ffd166;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(circle at 50% 0%, #132235 0, var(--bg) 58%);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1120px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 28px 0;
+      }
+
+      header {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(28px, 4vw, 52px);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .subtitle {
+        margin: 10px 0 0;
+        color: var(--muted);
+        max-width: 720px;
+        line-height: 1.6;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      button {
+        border: 1px solid var(--line);
+        background: var(--panel-2);
+        color: var(--text);
+        border-radius: 8px;
+        padding: 10px 14px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      button:hover {
+        border-color: var(--blue);
+      }
+
+      .primary {
+        background: var(--accent);
+        color: #05110b;
+        border-color: var(--accent);
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 16px;
+      }
+
+      canvas {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        display: block;
+        background: #0b1118;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      aside {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: color-mix(in srgb, var(--panel) 92%, transparent);
+        padding: 16px;
+      }
+
+      .metric {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .metric:last-child {
+        border-bottom: 0;
+      }
+
+      .metric span {
+        color: var(--muted);
+      }
+
+      .metric strong {
+        font-size: 18px;
+      }
+
+      .log {
+        min-height: 96px;
+        margin-top: 14px;
+        padding: 12px;
+        border-radius: 8px;
+        background: #0b1118;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      footer {
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 860px) {
+        header,
+        .layout {
+          grid-template-columns: 1fr;
+          display: grid;
+        }
+
+        .actions {
+          justify-content: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>Backend Circuit</h1>
+          <p class="subtitle">
+            Route incoming events through API, queue, workers, and storage. Keep latency low, prevent queue overload,
+            and use the AI optimizer when the system starts to drift.
+          </p>
+        </div>
+        <div class="actions">
+          <button class="primary" id="start">Start</button>
+          <button id="optimizer">AI optimizer</button>
+        </div>
+      </header>
+
+      <section class="layout">
+        <canvas id="game" width="960" height="600" aria-label="Backend routing mini-game"></canvas>
+        <aside>
+          <div class="metric"><span>Processed</span><strong id="processed">0</strong></div>
+          <div class="metric"><span>Failed</span><strong id="failed">0</strong></div>
+          <div class="metric"><span>Latency</span><strong id="latency">12%</strong></div>
+          <div class="metric"><span>Queue pressure</span><strong id="pressure">0%</strong></div>
+          <div class="metric"><span>Score</span><strong id="score">0</strong></div>
+          <div class="log" id="log">System idle. Press Start, then click services to route packets.</div>
+        </aside>
+      </section>
+
+      <footer>
+        A small profile game by Burhan Cabiroglu, inspired by distributed systems, RabbitMQ, observability, and backend reliability.
+      </footer>
+    </main>
+
+    <script>
+      const canvas = document.getElementById("game");
+      const ctx = canvas.getContext("2d");
+      const ui = {
+        processed: document.getElementById("processed"),
+        failed: document.getElementById("failed"),
+        latency: document.getElementById("latency"),
+        pressure: document.getElementById("pressure"),
+        score: document.getElementById("score"),
+        log: document.getElementById("log"),
+        start: document.getElementById("start"),
+        optimizer: document.getElementById("optimizer"),
+      };
+
+      const services = [
+        { id: "api", label: "API", x: 180, y: 180, color: "#58a6ff" },
+        { id: "queue", label: "RabbitMQ", x: 480, y: 180, color: "#ffb86b" },
+        { id: "worker", label: "Worker", x: 760, y: 180, color: "#36d399" },
+        { id: "db", label: "PostgreSQL", x: 480, y: 420, color: "#a78bfa" },
+      ];
+
+      const route = ["api", "queue", "worker", "db"];
+      let packets = [];
+      let running = false;
+      let lastSpawn = 0;
+      let processed = 0;
+      let failed = 0;
+      let latency = 12;
+      let pressure = 0;
+      let score = 0;
+      let selected = "api";
+
+      function serviceById(id) {
+        return services.find((service) => service.id === id);
+      }
+
+      function spawnPacket(time) {
+        const first = serviceById("api");
+        packets.push({
+          x: 44,
+          y: first.y,
+          target: 0,
+          speed: 1.2 + Math.random() * 1.5,
+          age: 0,
+          color: Math.random() > 0.2 ? "#36d399" : "#ffd166",
+        });
+        lastSpawn = time;
+      }
+
+      function updateMetrics() {
+        pressure = Math.min(100, Math.round((packets.length / 18) * 100));
+        latency = Math.min(100, Math.max(4, Math.round(latency + pressure * 0.006 - processed * 0.002)));
+        ui.processed.textContent = processed;
+        ui.failed.textContent = failed;
+        ui.latency.textContent = `${latency}%`;
+        ui.pressure.textContent = `${pressure}%`;
+        ui.score.textContent = score;
+      }
+
+      function drawService(service) {
+        const active = service.id === selected;
+        ctx.beginPath();
+        ctx.arc(service.x, service.y, active ? 50 : 44, 0, Math.PI * 2);
+        ctx.fillStyle = "#101923";
+        ctx.fill();
+        ctx.lineWidth = active ? 4 : 2;
+        ctx.strokeStyle = active ? service.color : "#26364a";
+        ctx.stroke();
+        ctx.fillStyle = service.color;
+        ctx.font = "700 16px Inter, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(service.label, service.x, service.y + 6);
+      }
+
+      function drawLinks() {
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "#26364a";
+        ctx.setLineDash([8, 12]);
+        const points = route.map(serviceById);
+        for (let i = 0; i < points.length - 1; i += 1) {
+          ctx.beginPath();
+          ctx.moveTo(points[i].x, points[i].y);
+          ctx.lineTo(points[i + 1].x, points[i + 1].y);
+          ctx.stroke();
+        }
+        ctx.setLineDash([]);
+      }
+
+      function drawPacket(packet) {
+        ctx.beginPath();
+        ctx.arc(packet.x, packet.y, 8, 0, Math.PI * 2);
+        ctx.fillStyle = packet.color;
+        ctx.shadowColor = packet.color;
+        ctx.shadowBlur = 16;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+
+      function tick(time) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#0b1118";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        drawLinks();
+        services.forEach(drawService);
+
+        if (running && time - lastSpawn > Math.max(360, 980 - score * 3)) {
+          spawnPacket(time);
+        }
+
+        packets = packets.filter((packet) => {
+          packet.age += 1;
+          const target = serviceById(route[packet.target]);
+          const dx = target.x - packet.x;
+          const dy = target.y - packet.y;
+          const distance = Math.hypot(dx, dy);
+          const move = packet.speed + (selected === target.id ? 1.3 : 0);
+
+          if (distance < 12) {
+            packet.target += 1;
+            if (packet.target >= route.length) {
+              processed += 1;
+              score += Math.max(5, 30 - Math.floor(latency / 5));
+              latency = Math.max(4, latency - 2);
+              return false;
+            }
+          } else {
+            packet.x += (dx / distance) * move;
+            packet.y += (dy / distance) * move;
+          }
+
+          if (packet.age > 780 || pressure > 96) {
+            failed += 1;
+            latency = Math.min(100, latency + 8);
+            return false;
+          }
+
+          drawPacket(packet);
+          return true;
+        });
+
+        updateMetrics();
+
+        if (running) {
+          requestAnimationFrame(tick);
+        }
+      }
+
+      canvas.addEventListener("click", (event) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * canvas.width;
+        const y = ((event.clientY - rect.top) / rect.height) * canvas.height;
+        const service = services.find((item) => Math.hypot(item.x - x, item.y - y) < 58);
+        if (service) {
+          selected = service.id;
+          ui.log.textContent = `Routing focus shifted to ${service.label}.`;
+        }
+      });
+
+      ui.start.addEventListener("click", () => {
+        running = !running;
+        ui.start.textContent = running ? "Pause" : "Start";
+        ui.log.textContent = running ? "Events are flowing. Click services to reduce local congestion." : "System paused.";
+        if (running) requestAnimationFrame(tick);
+      });
+
+      ui.optimizer.addEventListener("click", () => {
+        latency = Math.max(4, latency - 18);
+        packets.forEach((packet) => {
+          packet.speed += 0.8;
+        });
+        ui.log.textContent = "AI optimizer applied: queue pressure reduced and packet routing accelerated.";
+        updateMetrics();
+      });
+
+      updateMetrics();
+      requestAnimationFrame(tick);
+    </script>
+  </body>
+</html>
+

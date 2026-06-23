@@ -1,27 +1,85 @@
-<h1 align="center">Hi 👋, I'm Burhan Cabiroglu</h1>
-<h3 align="center">A passionate Software Engineer from Turkey</h3>
+<div align="center">
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=burhancabiroglu&label=Profile%20views&color=0e75b6&style=flat" alt="burhancabiroglu" /> </p>
+# Burhan Cabiroglu
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=burhancabiroglu" alt="burhancabiroglu" /></a> </p>
+### Backend Software Engineer | Java, Spring Boot, .NET, Microservices, Distributed Systems
 
-<p align="left"> <a href="https://twitter.com/" target="blank"><img src="https://img.shields.io/twitter/follow/?logo=twitter&style=for-the-badge" alt="" /></a> </p>
+I build production backend systems where reliability matters: distributed POS platforms, financial application flows, message-driven services, CI/CD automation, and observability-heavy production support.
 
-- 💬 Ask me about **Android Development, Jetpack Compose, Kotlin, Cloud Development, SpringCloud, NestJs, AI Algorithms**
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-burhancabiroglu-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/burhancabiroglu)
+[![Email](https://img.shields.io/badge/Email-burhancabiroglu97%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:burhancabiroglu97@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-burhancabiroglu-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/burhancabiroglu)
 
-- 📫 How to reach me **burhancabiroglu97@gmail.com**
+</div>
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://linkedin.com/in/burhancabiroglu" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="burhancabiroglu" height="30" width="40" /></a>
+---
+
+## What I Focus On
+
+- Backend services with Java, Spring Boot, C#, .NET, Node.js, REST APIs, GraphQL, CQRS, and MediatR
+- Distributed systems with RabbitMQ, event-driven flows, offline synchronization, and recovery mechanisms
+- Databases with PostgreSQL, MySQL, schema design, query optimization, and transaction-oriented workflows
+- Production delivery with Docker, Jenkins, CI/CD, Git workflows, structured logging, Serilog, and ELK
+- AI-era engineering: practical systems thinking, automation, observability, and backend foundations for intelligent products
+
+## Current Work
+
+I am currently working on distributed POS systems, building backend services and deployment automation across large cash register environments. My recent work includes RabbitMQ communication flows, offline sync and recovery, CI/CD automation, and structured logging for production troubleshooting.
+
+Previously, I worked on financial applications across banking, factoring, international banking, marketplace, and enterprise platforms.
+
+## Featured Systems
+
+| Project | What it shows | Stack |
+| --- | --- | --- |
+| [Cabir CRM](https://github.com/burhancabiroglu/cabir-crm) | Full-stack CRM with clean backend structure, auth, CQRS, and production-style deployment thinking | Next.js, TypeScript, .NET 8, PostgreSQL, MediatR, CQRS, JWT |
+| [Ticket Microservice](https://github.com/burhancabiroglu/TicketMicroservice) | Java microservices, service discovery, async messaging, mail flows, and containerized infrastructure | Java, Spring Boot, Eureka, Spring Security, RabbitMQ, Docker, PostgreSQL |
+| [Transportation Server System](https://github.com/burhancabiroglu/transport-reservation-server) | Reservation backend with authentication and operational data flows | TypeScript, NestJS, PostgreSQL, JWT, React, Docker |
+
+## Architecture Snapshot
+
+```mermaid
+flowchart LR
+    Client["POS / Web / Mobile Clients"] --> API["Backend APIs"]
+    API --> Domain["Domain Services"]
+    Domain --> DB[("PostgreSQL / MySQL")]
+    Domain --> MQ["RabbitMQ"]
+    MQ --> Workers["Async Workers"]
+    Workers --> Observability["Structured Logs / ELK"]
+    API --> CI["Jenkins / Docker Delivery"]
+```
+
+## Tech Stack
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=java,spring,dotnet,cs,ts,js,nodejs,nestjs,react,nextjs,postgres,mysql,rabbitmq,docker,git,githubactions,jenkins,aws" alt="Tech stack icons" />
 </p>
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://aws.amazon.com/amplify/" target="_blank" rel="noreferrer"> <img src="https://docs.amplify.aws/assets/logo-dark.svg" alt="amplify" width="40" height="40"/> </a> <a href="https://developer.android.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original-wordmark.svg" alt="android" width="40" height="40"/> </a> 
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="csharp" width="40" height="40"/> </a> <a href="https://dart.dev" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/dartlang/dartlang-icon.svg" alt="dart" width="40" height="40"/> </a> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a> <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> <a href="https://firebase.google.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/> </a> <a href="https://flutter.dev" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="flutter" width="40" height="40"/> </a> <a href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/gatsbyjs/gatsbyjs-icon.svg" alt="gatsby" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://heroku.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> </a><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://kotlinlang.org" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/kotlinlang/kotlinlang-icon.svg" alt="kotlin" width="40" height="40"/> </a> <a href="https://mochajs.org" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/mochajs/mochajs-icon.svg" alt="mocha" width="40" height="40"/> </a> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://nestjs.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nestjs/nestjs-plain.svg" alt="nestjs" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://www.postgresql.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="40" height="40"/> </a> <a href="https://postman.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="40" height="40"/> </a> <a href="https://www.tensorflow.org" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" alt="tensorflow" width="40" height="40"/> </a> <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/> </a> <a href="https://unity.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/unity3d/unity3d-icon.svg" alt="unity" width="40" height="40"/> </a> </p>
+## Backend Mini-Game
 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=burhancabiroglu&show_icons=true&locale=en&layout=compact" alt="burhancabiroglu" /></p>
+I am experimenting with a small browser game that turns backend reliability into a playable system: route events through services, protect the queue, and keep latency under control.
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=burhancabiroglu&show_icons=true&locale=en" alt="burhancabiroglu" /></p>
+Play it here after GitHub Pages is enabled:
 
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=burhancabiroglu&" alt="burhancabiroglu" /></p>
+**https://burhancabiroglu.github.io/burhancabiroglu/game/**
+
+## GitHub Activity
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/burhancabiroglu/burhancabiroglu/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/burhancabiroglu/burhancabiroglu/output/github-contribution-grid-snake.svg" />
+  <img alt="GitHub contribution grid snake animation" src="https://raw.githubusercontent.com/burhancabiroglu/burhancabiroglu/output/github-contribution-grid-snake.svg" />
+</picture>
+
+<p align="center">
+  <img height="170" src="https://github-readme-stats.vercel.app/api?username=burhancabiroglu&show_icons=true&theme=github_dark&hide_border=true&rank_icon=github" alt="Burhan Cabiroglu GitHub stats" />
+  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=burhancabiroglu&layout=compact&theme=github_dark&hide_border=true&langs_count=8" alt="Most used languages" />
+</p>
+
+## Open To
+
+- Backend Software Engineer roles
+- Java / Spring Boot backend roles
+- Distributed systems, financial systems, and production platform teams
+- International relocation opportunities
+
