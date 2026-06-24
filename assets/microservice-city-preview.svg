@@ -1,108 +1,123 @@
 <svg width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">3D Microservice City Preview</title>
-  <desc id="desc">A cinematic preview of a 3D backend and AI career navigator with Spring Boot services, RabbitMQ, PostgreSQL, observability, and AI worker towers.</desc>
+  <title id="title">Cozy 3D Microservice Town Preview</title>
+  <desc id="desc">A sunny low-poly microservice town preview with grass, small service houses, trees, a delivery truck, and an AI interviewer.</desc>
   <style>
-    .text { fill: #edf6ff; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .muted { fill: #9fb1c4; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .mono { fill: #b7c4d4; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-    .neonBlue { stroke: #58a6ff; filter: url(#glowBlue); }
-    .neonGreen { stroke: #36d399; filter: url(#glowGreen); }
-    .neonViolet { stroke: #a78bfa; filter: url(#glowViolet); }
+    .text { fill: #203047; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .muted { fill: #617287; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .mono { fill: #314156; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .float { animation: float 4.5s ease-in-out infinite; }
+    .drive { animation: drive 5.8s ease-in-out infinite; }
+    .cloud { animation: cloud 8s linear infinite; }
     .pulse { animation: pulse 2.4s ease-in-out infinite; transform-origin: center; }
-    .float { animation: float 4s ease-in-out infinite; }
-    .dash { stroke-dasharray: 10 16; animation: dash 1.5s linear infinite; }
-    .scan { animation: scan 3.8s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { opacity: .68; transform: scale(1); } 50% { opacity: 1; transform: scale(1.035); } }
-    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-    @keyframes dash { to { stroke-dashoffset: -52; } }
-    @keyframes scan { 0%,100% { transform: translateX(0); opacity: .12; } 50% { transform: translateX(420px); opacity: .72; } }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes drive { 0%,100% { transform: translate(0, 0); } 50% { transform: translate(120px, -32px); } }
+    @keyframes cloud { 0% { transform: translateX(-20px); } 100% { transform: translateX(32px); } }
+    @keyframes pulse { 0%,100% { opacity: .72; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
   </style>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="520" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#070B12"/>
-      <stop offset=".48" stop-color="#0B1420"/>
-      <stop offset="1" stop-color="#07110F"/>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BFE7FF"/>
+      <stop offset=".62" stop-color="#EAF8FF"/>
+      <stop offset="1" stop-color="#F8F2D8"/>
     </linearGradient>
-    <linearGradient id="road" x1="163" y1="354" x2="1013" y2="454" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#162235"/>
-      <stop offset=".5" stop-color="#1E2C3E"/>
-      <stop offset="1" stop-color="#10251E"/>
+    <linearGradient id="grass" x1="280" y1="210" x2="930" y2="476" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BCEB77"/>
+      <stop offset=".58" stop-color="#85D15D"/>
+      <stop offset="1" stop-color="#62B551"/>
     </linearGradient>
-    <filter id="glowBlue" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glowGreen" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glowViolet" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#6D8B52" flood-opacity=".22"/>
     </filter>
   </defs>
-  <rect width="1200" height="520" rx="26" fill="url(#bg)"/>
-  <rect x="1" y="1" width="1198" height="518" rx="25" stroke="#273448"/>
-  <circle cx="207" cy="107" r="210" fill="#58A6FF" opacity=".12"/>
-  <circle cx="1002" cy="146" r="220" fill="#36D399" opacity=".10"/>
-  <circle cx="635" cy="490" r="250" fill="#A78BFA" opacity=".10"/>
+  <rect width="1200" height="520" rx="28" fill="url(#sky)"/>
+  <circle cx="1020" cy="82" r="46" fill="#FFD979"/>
+  <g class="cloud" opacity=".9">
+    <ellipse cx="165" cy="110" rx="54" ry="22" fill="white"/>
+    <ellipse cx="207" cy="102" rx="40" ry="27" fill="white"/>
+    <ellipse cx="245" cy="112" rx="52" ry="21" fill="white"/>
+  </g>
+  <g class="cloud" style="animation-delay:-3s" opacity=".8">
+    <ellipse cx="782" cy="125" rx="50" ry="20" fill="white"/>
+    <ellipse cx="822" cy="116" rx="38" ry="25" fill="white"/>
+    <ellipse cx="860" cy="126" rx="48" ry="19" fill="white"/>
+  </g>
 
-  <text x="58" y="72" class="text" font-size="34" font-weight="850">3D Microservice City</text>
-  <text x="58" y="104" class="muted" font-size="16">Explore Burhan's Spring Boot microservices, distributed systems, and AI engineering path.</text>
+  <text x="58" y="74" class="text" font-size="34" font-weight="850">Cozy 3D Microservice Town</text>
+  <text x="58" y="106" class="muted" font-size="16">A playful way to explore Spring Boot microservices, RabbitMQ, PostgreSQL, observability, and AI engineering.</text>
 
-  <polygon points="162,355 612,238 1040,353 591,480" fill="url(#road)" stroke="#2D3B50"/>
-  <path d="M214 357 C389 302 493 291 622 330 C735 365 840 374 996 350" class="dash neonBlue" stroke-width="4" fill="none"/>
-  <path d="M271 407 C450 353 571 359 670 388 C766 416 860 415 948 390" class="dash neonGreen" stroke-width="4" fill="none"/>
+  <g filter="url(#soft)">
+    <ellipse cx="610" cy="365" rx="472" ry="120" fill="#5A9B4E" opacity=".28"/>
+    <path d="M181 352 C298 244 479 200 640 220 C825 242 995 301 1054 366 C939 474 746 506 550 477 C367 450 236 421 181 352Z" fill="url(#grass)" stroke="#72B75A" stroke-width="3"/>
+    <path d="M266 366 C420 300 541 293 656 334 C742 364 832 377 963 344" stroke="#D69A62" stroke-width="24" stroke-linecap="round"/>
+    <path d="M320 403 C470 348 582 359 677 391 C760 418 844 415 923 388" stroke="#D69A62" stroke-width="20" stroke-linecap="round"/>
+  </g>
 
   <g class="float">
-    <polygon points="181,266 254,246 254,356 181,377" fill="#132238" stroke="#58A6FF"/>
-    <polygon points="254,246 318,270 318,380 254,356" fill="#101A2A" stroke="#2D3B50"/>
-    <polygon points="181,266 244,290 318,270 254,246" fill="#1A2D49" stroke="#58A6FF"/>
-    <text x="214" y="232" class="mono" font-size="14">API Gateway</text>
+    <polygon points="260,265 326,236 392,265 392,354 260,354" fill="#8DD66F" stroke="#5DA34B" stroke-width="2"/>
+    <polygon points="246,269 326,199 407,269" fill="#ED8A49" stroke="#C56A39" stroke-width="2"/>
+    <rect x="306" y="309" width="38" height="45" rx="6" fill="#FFF2CE"/>
+    <rect x="276" y="286" width="34" height="28" rx="6" fill="#FFF2CE"/>
+    <rect x="348" y="286" width="34" height="28" rx="6" fill="#FFF2CE"/>
+    <text x="257" y="224" class="mono" font-size="14" font-weight="700">Spring Boot</text>
   </g>
 
-  <g class="float" style="animation-delay:.3s">
-    <polygon points="365,205 450,182 450,350 365,373" fill="#13271F" stroke="#36D399"/>
-    <polygon points="450,182 523,213 523,382 450,350" fill="#101C18" stroke="#2D3B50"/>
-    <polygon points="365,205 438,236 523,213 450,182" fill="#1D3A2D" stroke="#36D399"/>
-    <text x="372" y="170" class="mono" font-size="14">Spring Boot Services</text>
+  <g class="float" style="animation-delay:.35s">
+    <polygon points="458,238 521,210 585,238 585,337 458,337" fill="#9BD5F5" stroke="#619BCB" stroke-width="2"/>
+    <polygon points="444,243 521,178 599,243" fill="#4D7DC7" stroke="#315E9E" stroke-width="2"/>
+    <rect x="501" y="293" width="38" height="44" rx="6" fill="#FFF2CE"/>
+    <rect x="475" y="262" width="31" height="27" rx="6" fill="#FFF2CE"/>
+    <rect x="539" y="262" width="31" height="27" rx="6" fill="#FFF2CE"/>
+    <text x="467" y="201" class="mono" font-size="14" font-weight="700">API Gateway</text>
   </g>
 
-  <g class="float" style="animation-delay:.55s">
-    <polygon points="604,163 682,143 682,354 604,374" fill="#241C39" stroke="#A78BFA"/>
-    <polygon points="682,143 756,174 756,386 682,354" fill="#171326" stroke="#2D3B50"/>
-    <polygon points="604,163 678,195 756,174 682,143" fill="#30264B" stroke="#A78BFA"/>
-    <text x="617" y="130" class="mono" font-size="14">AI Worker</text>
+  <g class="float" style="animation-delay:.7s">
+    <polygon points="652,252 720,223 788,252 788,351 652,351" fill="#FFD176" stroke="#DBA64D" stroke-width="2"/>
+    <polygon points="637,257 720,188 803,257" fill="#E87A38" stroke="#C65D2A" stroke-width="2"/>
+    <rect x="699" y="305" width="40" height="46" rx="6" fill="#FFF2CE"/>
+    <rect x="670" y="275" width="32" height="27" rx="6" fill="#FFF2CE"/>
+    <rect x="741" y="275" width="32" height="27" rx="6" fill="#FFF2CE"/>
+    <text x="684" y="210" class="mono" font-size="14" font-weight="700">RabbitMQ</text>
   </g>
 
-  <g class="float" style="animation-delay:.85s">
-    <polygon points="824,220 895,201 895,350 824,370" fill="#382718" stroke="#FFD166"/>
-    <polygon points="895,201 958,228 958,378 895,350" fill="#221A11" stroke="#2D3B50"/>
-    <polygon points="824,220 887,247 958,228 895,201" fill="#4A341F" stroke="#FFD166"/>
-    <text x="841" y="188" class="mono" font-size="14">RabbitMQ</text>
+  <g class="float" style="animation-delay:1s">
+    <polygon points="842,264 905,236 970,264 970,356 842,356" fill="#F7A3C8" stroke="#D074A8" stroke-width="2"/>
+    <polygon points="828,269 905,204 984,269" fill="#BD5C97" stroke="#994578" stroke-width="2"/>
+    <rect x="885" y="312" width="40" height="44" rx="6" fill="#FFF2CE"/>
+    <rect x="859" y="287" width="31" height="27" rx="6" fill="#FFF2CE"/>
+    <rect x="925" y="287" width="31" height="27" rx="6" fill="#FFF2CE"/>
+    <text x="862" y="228" class="mono" font-size="14" font-weight="700">AI Engineer</text>
   </g>
 
   <g>
-    <rect x="610" y="397" width="64" height="24" rx="7" fill="#101827" stroke="#58A6FF"/>
-    <rect x="661" y="390" width="52" height="31" rx="7" fill="#13271F" stroke="#36D399"/>
-    <circle cx="628" cy="426" r="8" fill="#0B111B" stroke="#58A6FF"/>
-    <circle cx="696" cy="426" r="8" fill="#0B111B" stroke="#36D399"/>
-    <text x="608" y="382" class="mono" font-size="13">event delivery truck</text>
+    <circle cx="192" cy="326" r="22" fill="#69B85C"/>
+    <rect x="187" y="337" width="10" height="35" rx="5" fill="#9A6A3F"/>
+    <circle cx="1010" cy="328" r="24" fill="#69B85C"/>
+    <rect x="1005" y="340" width="10" height="35" rx="5" fill="#9A6A3F"/>
+    <circle cx="583" cy="196" r="18" fill="#6DC162"/>
+    <rect x="579" y="208" width="8" height="26" rx="4" fill="#9A6A3F"/>
+  </g>
+
+  <g class="drive">
+    <rect x="540" y="392" width="82" height="30" rx="9" fill="#E86F30" stroke="#B95626" stroke-width="2"/>
+    <rect x="596" y="377" width="42" height="45" rx="8" fill="#E86F30" stroke="#B95626" stroke-width="2"/>
+    <rect x="553" y="377" width="44" height="39" rx="7" fill="#FFF1C7" stroke="#D9BD88" stroke-width="2"/>
+    <circle cx="562" cy="427" r="10" fill="#26333F"/>
+    <circle cx="623" cy="427" r="10" fill="#26333F"/>
+    <text x="525" y="458" class="mono" font-size="13">event delivery truck</text>
   </g>
 
   <g class="pulse">
-    <rect x="814" y="56" width="308" height="128" rx="18" fill="#101827" stroke="#303D52"/>
-    <circle cx="850" cy="98" r="21" fill="#172336" stroke="#58A6FF"/>
-    <rect x="872" y="88" width="18" height="34" rx="8" fill="#36D399"/>
-    <text x="902" y="93" class="text" font-size="17" font-weight="800">AI Interviewer</text>
-    <text x="902" y="119" class="muted" font-size="13">asks about backend depth, projects,</text>
-    <text x="902" y="139" class="muted" font-size="13">Spring Boot, and AI engineering.</text>
+    <rect x="789" y="61" width="325" height="126" rx="22" fill="#FFFDF2" stroke="#BBD7A7"/>
+    <rect x="824" y="91" width="54" height="54" rx="18" fill="#E7F7FF" stroke="#83C5F7" stroke-width="2"/>
+    <circle cx="842" cy="116" r="5" fill="#4F9F45"/>
+    <circle cx="861" cy="116" r="5" fill="#4F9F45"/>
+    <text x="898" y="100" class="text" font-size="18" font-weight="850">AI Interviewer</text>
+    <text x="898" y="126" class="muted" font-size="13">asks visitors about backend depth,</text>
+    <text x="898" y="146" class="muted" font-size="13">projects, Spring Boot, and AI engineering.</text>
   </g>
 
-  <rect x="58" y="398" width="386" height="58" rx="14" fill="#101827" stroke="#303D52"/>
-  <rect x="73" y="415" width="88" height="24" rx="12" fill="#122D22" stroke="#36D399"/>
-  <text x="86" y="432" class="mono" font-size="12">Explore</text>
-  <text x="178" y="433" class="muted" font-size="14">Interactive 3D profile built with Three.js</text>
-
-  <rect x="354" y="122" width="440" height="260" fill="#58A6FF" opacity=".08" class="scan"/>
+  <rect x="58" y="398" width="410" height="58" rx="17" fill="#FFFDF2" stroke="#BBD7A7"/>
+  <rect x="75" y="415" width="91" height="24" rx="12" fill="#D7F1B6" stroke="#69B85C"/>
+  <text x="93" y="432" class="mono" font-size="12" font-weight="800">Explore</text>
+  <text x="184" y="433" class="muted" font-size="14">Interactive cozy 3D profile built with Three.js</text>
 </svg>
