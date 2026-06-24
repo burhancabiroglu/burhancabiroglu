@@ -2,9 +2,9 @@
 
 # Burhan Cabiroglu
 
-### Backend Software Engineer | AI-augmented systems | Java, Spring Boot, .NET, Microservices
+### Backend Software Engineer | AI, Algorithms & Deep Learning | Java, Spring Boot, .NET, Microservices
 
-I build production backend systems where reliability matters: distributed services, financial application flows, message-driven architectures, CI/CD automation, and observability-heavy production support. I am especially interested in the AI era of backend engineering: reliable APIs, event pipelines, agentic workflows, and systems that make intelligent products dependable in production.
+I build production backend systems where reliability matters: distributed services, financial application flows, message-driven architectures, CI/CD automation, and observability-heavy production support. Alongside backend engineering, I study and build around AI algorithms, deep learning fundamentals, model-driven workflows, recommendation logic, embeddings, and intelligent automation.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-burhancabiroglu-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/burhancabiroglu)
 [![Email](https://img.shields.io/badge/Email-burhancabiroglu97%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:burhancabiroglu97@gmail.com)
@@ -14,19 +14,28 @@ I build production backend systems where reliability matters: distributed servic
 
 ---
 
+<p align="center">
+  <img src="./assets/anomaly-lab.svg" alt="AI Anomaly Detection Lab: backend metrics, model inference, microservices, event bus, and automated recovery" />
+</p>
+
 ## What I Focus On
 
 - Backend services with Java, Spring Boot, C#, .NET, Node.js, REST APIs, GraphQL, CQRS, and MediatR
 - Distributed systems with RabbitMQ, event-driven flows, offline synchronization, and recovery mechanisms
 - Databases with PostgreSQL, MySQL, schema design, query optimization, and transaction-oriented workflows
 - Production delivery with Docker, Jenkins, CI/CD, Git workflows, structured logging, Serilog, and ELK
-- AI developer work: LLM-ready APIs, async AI jobs, retrieval workflows, automation, observability, and backend foundations for intelligent products
+- AI and algorithms: neural network fundamentals, embeddings, recommendation systems, anomaly detection, model evaluation, and optimization thinking
+- AI engineering: LLM-ready APIs, RAG pipelines, async AI jobs, agentic workflows, automation, and backend foundations for intelligent products
 
 ## Current Work
 
 I am currently building production backend services with C#, .NET, PostgreSQL, MySQL, RabbitMQ, Jenkins, and React. My recent work includes asynchronous communication flows, offline sync and recovery mechanisms, CI/CD automation, and structured logging for production troubleshooting.
 
 Previously, I worked on financial applications across banking, factoring, international banking, marketplace, and enterprise platforms.
+
+## AI, Algorithms & Deep Learning
+
+I am interested in the engineering layer where backend systems and AI models meet: data pipelines, embeddings, recommendation systems, anomaly detection, model-serving APIs, and async inference workflows. My goal is to combine reliable backend architecture with algorithmic thinking and practical deep learning foundations.
 
 ## Featured Systems
 
@@ -38,9 +47,9 @@ Previously, I worked on financial applications across banking, factoring, intern
 
 ## Flagship Direction
 
-The next public project I am shaping is a larger, real microservice application: an AI-assisted commerce and operations platform with identity, catalog, order, payment, notification, recommendation, and observability services.
+The next public project I am shaping is a larger, real microservice application: an AI commerce and operations platform with identity, catalog, order, payment, inventory, notification, recommendation, anomaly detection, and observability services.
 
-The goal is to demonstrate production-grade backend thinking: service boundaries, RabbitMQ events, PostgreSQL ownership per service, Docker Compose local infrastructure, gateway routing, structured logs, and AI workflows that run asynchronously instead of blocking user-facing APIs.
+The goal is to demonstrate production-grade backend thinking and AI engineering in one system: service boundaries, RabbitMQ events, PostgreSQL ownership per service, Docker Compose local infrastructure, gateway routing, structured logs, async model inference, recommendation jobs, anomaly detection, and observability.
 
 ## Architecture Snapshot
 
@@ -50,15 +59,21 @@ flowchart LR
     Gateway --> Identity["Identity Service"]
     Gateway --> Catalog["Catalog Service"]
     Gateway --> Order["Order Service"]
+    Gateway --> Search["Search / Recommendation API"]
     Order --> Payment["Payment Service"]
+    Order --> Inventory["Inventory Service"]
     Order --> MQ["RabbitMQ Event Bus"]
     MQ --> Notification["Notification Service"]
-    MQ --> AI["AI Recommendation / Assistant Jobs"]
+    MQ --> AI["AI Worker Service"]
+    MQ --> Anomaly["Anomaly Detection Jobs"]
+    Search --> Vector[("Vector Store")]
+    AI --> Models["Embedding / Ranking Models"]
+    Anomaly --> Metrics["Metrics / Logs / Traces"]
     Catalog --> CatalogDb[("Catalog DB")]
     Order --> OrderDb[("Order DB")]
     Payment --> PaymentDb[("Payment DB")]
-    AI --> Vector[("Vector Store")]
-    Notification --> Observability["Logs / Metrics / Traces"]
+    Inventory --> InventoryDb[("Inventory DB")]
+    Metrics --> Observability["Observability Dashboard"]
 ```
 
 ## Tech Stack
@@ -67,13 +82,9 @@ flowchart LR
   <img src="https://skillicons.dev/icons?i=java,spring,dotnet,cs,ts,js,nodejs,nestjs,react,nextjs,postgres,mysql,rabbitmq,docker,git,githubactions,jenkins,aws" alt="Tech stack icons" />
 </p>
 
-## AI Backend Mini-Game
+## Interactive Systems Thinking
 
-I am experimenting with a browser mini-game that turns microservice operations into a playable system: route traffic, scale services, handle incidents, and use AI-assisted automation before latency burns the platform down.
-
-Play it here after GitHub Pages is enabled:
-
-**https://burhancabiroglu.github.io/burhancabiroglu/game/**
+The animated lab above represents the kind of systems I like building and studying: backend telemetry flowing into anomaly detection, model inference producing confidence scores, events moving through RabbitMQ, and automated recovery actions keeping distributed services healthy.
 
 ## GitHub Activity
 
