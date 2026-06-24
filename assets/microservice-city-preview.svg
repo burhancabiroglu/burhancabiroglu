@@ -1,123 +1,140 @@
 <svg width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Cozy 3D Microservice Town Preview</title>
-  <desc id="desc">A sunny low-poly microservice town preview with grass, small service houses, trees, a delivery truck, and an AI interviewer.</desc>
+  <title id="title">Low-poly Microservice Town Preview</title>
+  <desc id="desc">A polished low-poly town preview with roads, sidewalks, pastel service buildings, mountains, traffic, trees, and an AI interviewer.</desc>
   <style>
     .text { fill: #203047; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     .muted { fill: #617287; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     .mono { fill: #314156; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-    .float { animation: float 4.5s ease-in-out infinite; }
-    .drive { animation: drive 5.8s ease-in-out infinite; }
     .cloud { animation: cloud 8s linear infinite; }
+    .drive { animation: drive 5.8s ease-in-out infinite; }
     .pulse { animation: pulse 2.4s ease-in-out infinite; transform-origin: center; }
-    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-    @keyframes drive { 0%,100% { transform: translate(0, 0); } 50% { transform: translate(120px, -32px); } }
-    @keyframes cloud { 0% { transform: translateX(-20px); } 100% { transform: translateX(32px); } }
-    @keyframes pulse { 0%,100% { opacity: .72; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
+    @keyframes cloud { 0% { transform: translateX(-18px); } 100% { transform: translateX(34px); } }
+    @keyframes drive { 0%,100% { transform: translate(0, 0); } 50% { transform: translate(96px, -28px); } }
+    @keyframes pulse { 0%,100% { opacity: .75; transform: scale(1); } 50% { opacity: 1; transform: scale(1.035); } }
   </style>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="520" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#BFE7FF"/>
-      <stop offset=".62" stop-color="#EAF8FF"/>
+      <stop stop-color="#B9E5FF"/>
+      <stop offset=".7" stop-color="#EAF8FF"/>
       <stop offset="1" stop-color="#F8F2D8"/>
     </linearGradient>
-    <linearGradient id="grass" x1="280" y1="210" x2="930" y2="476" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#BCEB77"/>
-      <stop offset=".58" stop-color="#85D15D"/>
-      <stop offset="1" stop-color="#62B551"/>
-    </linearGradient>
     <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#6D8B52" flood-opacity=".22"/>
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#596A59" flood-opacity=".22"/>
     </filter>
   </defs>
   <rect width="1200" height="520" rx="28" fill="url(#sky)"/>
-  <circle cx="1020" cy="82" r="46" fill="#FFD979"/>
+  <circle cx="1032" cy="82" r="45" fill="#FFD979"/>
+
   <g class="cloud" opacity=".9">
-    <ellipse cx="165" cy="110" rx="54" ry="22" fill="white"/>
-    <ellipse cx="207" cy="102" rx="40" ry="27" fill="white"/>
-    <ellipse cx="245" cy="112" rx="52" ry="21" fill="white"/>
+    <ellipse cx="168" cy="108" rx="56" ry="22" fill="white"/>
+    <ellipse cx="211" cy="100" rx="40" ry="27" fill="white"/>
+    <ellipse cx="250" cy="111" rx="52" ry="21" fill="white"/>
   </g>
-  <g class="cloud" style="animation-delay:-3s" opacity=".8">
-    <ellipse cx="782" cy="125" rx="50" ry="20" fill="white"/>
-    <ellipse cx="822" cy="116" rx="38" ry="25" fill="white"/>
-    <ellipse cx="860" cy="126" rx="48" ry="19" fill="white"/>
+  <g class="cloud" style="animation-delay:-3s" opacity=".84">
+    <ellipse cx="790" cy="128" rx="54" ry="20" fill="white"/>
+    <ellipse cx="832" cy="118" rx="38" ry="25" fill="white"/>
+    <ellipse cx="870" cy="128" rx="48" ry="19" fill="white"/>
   </g>
 
-  <text x="58" y="74" class="text" font-size="34" font-weight="850">Cozy 3D Microservice Town</text>
-  <text x="58" y="106" class="muted" font-size="16">A playful way to explore Spring Boot microservices, RabbitMQ, PostgreSQL, observability, and AI engineering.</text>
+  <path d="M570 193 L623 104 L678 193 Z" fill="#8F9A83"/>
+  <path d="M642 203 L709 86 L779 203 Z" fill="#A6AA90"/>
+  <path d="M694 178 L709 86 L736 178 Z" fill="#F5F6F0"/>
+  <path d="M611 161 L623 104 L648 161 Z" fill="#F5F6F0"/>
+
+  <text x="58" y="74" class="text" font-size="34" font-weight="850">Low-poly Microservice Town</text>
+  <text x="58" y="106" class="muted" font-size="16">A polished 3D profile city for Spring Boot microservices, RabbitMQ, PostgreSQL, observability, and AI engineering.</text>
 
   <g filter="url(#soft)">
-    <ellipse cx="610" cy="365" rx="472" ry="120" fill="#5A9B4E" opacity=".28"/>
-    <path d="M181 352 C298 244 479 200 640 220 C825 242 995 301 1054 366 C939 474 746 506 550 477 C367 450 236 421 181 352Z" fill="url(#grass)" stroke="#72B75A" stroke-width="3"/>
-    <path d="M266 366 C420 300 541 293 656 334 C742 364 832 377 963 344" stroke="#D69A62" stroke-width="24" stroke-linecap="round"/>
-    <path d="M320 403 C470 348 582 359 677 391 C760 418 844 415 923 388" stroke="#D69A62" stroke-width="20" stroke-linecap="round"/>
-  </g>
-
-  <g class="float">
-    <polygon points="260,265 326,236 392,265 392,354 260,354" fill="#8DD66F" stroke="#5DA34B" stroke-width="2"/>
-    <polygon points="246,269 326,199 407,269" fill="#ED8A49" stroke="#C56A39" stroke-width="2"/>
-    <rect x="306" y="309" width="38" height="45" rx="6" fill="#FFF2CE"/>
-    <rect x="276" y="286" width="34" height="28" rx="6" fill="#FFF2CE"/>
-    <rect x="348" y="286" width="34" height="28" rx="6" fill="#FFF2CE"/>
-    <text x="257" y="224" class="mono" font-size="14" font-weight="700">Spring Boot</text>
-  </g>
-
-  <g class="float" style="animation-delay:.35s">
-    <polygon points="458,238 521,210 585,238 585,337 458,337" fill="#9BD5F5" stroke="#619BCB" stroke-width="2"/>
-    <polygon points="444,243 521,178 599,243" fill="#4D7DC7" stroke="#315E9E" stroke-width="2"/>
-    <rect x="501" y="293" width="38" height="44" rx="6" fill="#FFF2CE"/>
-    <rect x="475" y="262" width="31" height="27" rx="6" fill="#FFF2CE"/>
-    <rect x="539" y="262" width="31" height="27" rx="6" fill="#FFF2CE"/>
-    <text x="467" y="201" class="mono" font-size="14" font-weight="700">API Gateway</text>
-  </g>
-
-  <g class="float" style="animation-delay:.7s">
-    <polygon points="652,252 720,223 788,252 788,351 652,351" fill="#FFD176" stroke="#DBA64D" stroke-width="2"/>
-    <polygon points="637,257 720,188 803,257" fill="#E87A38" stroke="#C65D2A" stroke-width="2"/>
-    <rect x="699" y="305" width="40" height="46" rx="6" fill="#FFF2CE"/>
-    <rect x="670" y="275" width="32" height="27" rx="6" fill="#FFF2CE"/>
-    <rect x="741" y="275" width="32" height="27" rx="6" fill="#FFF2CE"/>
-    <text x="684" y="210" class="mono" font-size="14" font-weight="700">RabbitMQ</text>
-  </g>
-
-  <g class="float" style="animation-delay:1s">
-    <polygon points="842,264 905,236 970,264 970,356 842,356" fill="#F7A3C8" stroke="#D074A8" stroke-width="2"/>
-    <polygon points="828,269 905,204 984,269" fill="#BD5C97" stroke="#994578" stroke-width="2"/>
-    <rect x="885" y="312" width="40" height="44" rx="6" fill="#FFF2CE"/>
-    <rect x="859" y="287" width="31" height="27" rx="6" fill="#FFF2CE"/>
-    <rect x="925" y="287" width="31" height="27" rx="6" fill="#FFF2CE"/>
-    <text x="862" y="228" class="mono" font-size="14" font-weight="700">AI Engineer</text>
+    <polygon points="154,308 383,200 986,219 1082,342 812,487 227,455" fill="#8CCF62"/>
+    <polygon points="219,326 469,232 1030,251 1048,302 784,409 238,390" fill="#D8D2CA"/>
+    <polygon points="229,338 487,254 1010,271 1015,299 777,391 248,374" fill="#79716F"/>
+    <polygon points="381,229 420,218 699,424 662,437" fill="#79716F"/>
+    <polygon points="395,236 421,229 687,425 663,431" fill="#F5F1E8" opacity=".9"/>
+    <polygon points="248,353 776,370 780,381 252,365" fill="#F5F1E8" opacity=".9"/>
   </g>
 
   <g>
-    <circle cx="192" cy="326" r="22" fill="#69B85C"/>
-    <rect x="187" y="337" width="10" height="35" rx="5" fill="#9A6A3F"/>
-    <circle cx="1010" cy="328" r="24" fill="#69B85C"/>
-    <rect x="1005" y="340" width="10" height="35" rx="5" fill="#9A6A3F"/>
-    <circle cx="583" cy="196" r="18" fill="#6DC162"/>
-    <rect x="579" y="208" width="8" height="26" rx="4" fill="#9A6A3F"/>
+    <polygon points="280,255 351,235 351,354 280,376" fill="#F0A742"/>
+    <polygon points="351,235 426,264 426,383 351,354" fill="#D98635"/>
+    <polygon points="280,255 353,285 426,264 351,235" fill="#4F4E5E"/>
+    <g fill="#B7DBEC">
+      <rect x="300" y="286" width="20" height="27" rx="3"/>
+      <rect x="330" y="279" width="20" height="27" rx="3"/>
+      <rect x="300" y="326" width="20" height="27" rx="3"/>
+      <rect x="330" y="318" width="20" height="27" rx="3"/>
+    </g>
+    <text x="276" y="225" class="mono" font-size="14" font-weight="800">Spring Boot</text>
+  </g>
+
+  <g>
+    <polygon points="465,226 538,207 538,354 465,374" fill="#E98C9E"/>
+    <polygon points="538,207 611,235 611,383 538,354" fill="#C96A80"/>
+    <polygon points="465,226 539,255 611,235 538,207" fill="#4F4E5E"/>
+    <g fill="#B7DBEC">
+      <rect x="486" y="258" width="20" height="26" rx="3"/>
+      <rect x="518" y="250" width="20" height="26" rx="3"/>
+      <rect x="486" y="298" width="20" height="26" rx="3"/>
+      <rect x="518" y="290" width="20" height="26" rx="3"/>
+      <rect x="486" y="338" width="20" height="26" rx="3"/>
+    </g>
+    <text x="472" y="196" class="mono" font-size="14" font-weight="800">API Gateway</text>
+  </g>
+
+  <g>
+    <polygon points="657,244 730,225 730,365 657,386" fill="#98C964"/>
+    <polygon points="730,225 804,254 804,393 730,365" fill="#76A74F"/>
+    <polygon points="657,244 731,273 804,254 730,225" fill="#4F4E5E"/>
+    <g fill="#B7DBEC">
+      <rect x="678" y="278" width="20" height="26" rx="3"/>
+      <rect x="710" y="270" width="20" height="26" rx="3"/>
+      <rect x="678" y="318" width="20" height="26" rx="3"/>
+      <rect x="710" y="310" width="20" height="26" rx="3"/>
+    </g>
+    <text x="675" y="214" class="mono" font-size="14" font-weight="800">RabbitMQ</text>
+  </g>
+
+  <g>
+    <polygon points="852,266 922,246 922,359 852,379" fill="#B9DDED"/>
+    <polygon points="922,246 996,275 996,388 922,359" fill="#86B3C8"/>
+    <polygon points="852,266 923,295 996,275 922,246" fill="#4F4E5E"/>
+    <g fill="#FFFFFF" opacity=".9">
+      <rect x="872" y="298" width="20" height="25" rx="3"/>
+      <rect x="904" y="291" width="20" height="25" rx="3"/>
+      <rect x="872" y="335" width="20" height="25" rx="3"/>
+    </g>
+    <text x="862" y="236" class="mono" font-size="14" font-weight="800">PostgreSQL</text>
+  </g>
+
+  <g>
+    <circle cx="207" cy="332" r="24" fill="#5FAD52"/>
+    <rect x="201" y="348" width="12" height="38" rx="5" fill="#8D6741"/>
+    <circle cx="1032" cy="332" r="25" fill="#5FAD52"/>
+    <rect x="1026" y="348" width="12" height="38" rx="5" fill="#8D6741"/>
+    <circle cx="600" cy="412" r="22" fill="#5FAD52"/>
+    <rect x="594" y="427" width="12" height="34" rx="5" fill="#8D6741"/>
   </g>
 
   <g class="drive">
-    <rect x="540" y="392" width="82" height="30" rx="9" fill="#E86F30" stroke="#B95626" stroke-width="2"/>
-    <rect x="596" y="377" width="42" height="45" rx="8" fill="#E86F30" stroke="#B95626" stroke-width="2"/>
-    <rect x="553" y="377" width="44" height="39" rx="7" fill="#FFF1C7" stroke="#D9BD88" stroke-width="2"/>
-    <circle cx="562" cy="427" r="10" fill="#26333F"/>
-    <circle cx="623" cy="427" r="10" fill="#26333F"/>
-    <text x="525" y="458" class="mono" font-size="13">event delivery truck</text>
+    <polygon points="548,394 618,385 663,406 589,419" fill="#E86F30"/>
+    <polygon points="588,364 629,382 618,385 548,394" fill="#FFF1C7"/>
+    <rect x="555" y="407" width="82" height="16" rx="5" fill="#D85F27"/>
+    <circle cx="574" cy="427" r="10" fill="#26333F"/>
+    <circle cx="626" cy="427" r="10" fill="#26333F"/>
+    <text x="526" y="458" class="mono" font-size="13">event delivery truck</text>
   </g>
 
   <g class="pulse">
-    <rect x="789" y="61" width="325" height="126" rx="22" fill="#FFFDF2" stroke="#BBD7A7"/>
-    <rect x="824" y="91" width="54" height="54" rx="18" fill="#E7F7FF" stroke="#83C5F7" stroke-width="2"/>
-    <circle cx="842" cy="116" r="5" fill="#4F9F45"/>
-    <circle cx="861" cy="116" r="5" fill="#4F9F45"/>
-    <text x="898" y="100" class="text" font-size="18" font-weight="850">AI Interviewer</text>
-    <text x="898" y="126" class="muted" font-size="13">asks visitors about backend depth,</text>
-    <text x="898" y="146" class="muted" font-size="13">projects, Spring Boot, and AI engineering.</text>
+    <rect x="798" y="62" width="318" height="125" rx="22" fill="#FFFCF2" stroke="#C6D8B1"/>
+    <rect x="833" y="91" width="54" height="54" rx="18" fill="#E7F7FF" stroke="#83C5F7" stroke-width="2"/>
+    <circle cx="851" cy="116" r="5" fill="#4F9F45"/>
+    <circle cx="870" cy="116" r="5" fill="#4F9F45"/>
+    <text x="906" y="101" class="text" font-size="18" font-weight="850">AI Interviewer</text>
+    <text x="906" y="127" class="muted" font-size="13">guides visitors through backend depth,</text>
+    <text x="906" y="147" class="muted" font-size="13">projects, Spring Boot, and AI engineering.</text>
   </g>
 
-  <rect x="58" y="398" width="410" height="58" rx="17" fill="#FFFDF2" stroke="#BBD7A7"/>
+  <rect x="58" y="398" width="420" height="58" rx="17" fill="#FFFCF2" stroke="#C6D8B1"/>
   <rect x="75" y="415" width="91" height="24" rx="12" fill="#D7F1B6" stroke="#69B85C"/>
   <text x="93" y="432" class="mono" font-size="12" font-weight="800">Explore</text>
-  <text x="184" y="433" class="muted" font-size="14">Interactive cozy 3D profile built with Three.js</text>
+  <text x="184" y="433" class="muted" font-size="14">Interactive low-poly profile built with Three.js</text>
 </svg>
