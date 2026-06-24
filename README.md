@@ -15,7 +15,13 @@ I build production backend systems where reliability matters: Java/Spring Boot m
 ---
 
 <p align="center">
-  <img src="./assets/anomaly-lab.svg" alt="AI Anomaly Detection Lab: backend metrics, model inference, microservices, event bus, and automated recovery" />
+  <a href="https://burhancabiroglu.github.io/burhancabiroglu/explore/">
+    <img src="./assets/microservice-city-preview.svg" alt="3D Microservice City: interactive Spring Boot, distributed systems, and AI engineering profile" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://burhancabiroglu.github.io/burhancabiroglu/explore/"><strong>Explore my 3D Backend & AI Career Navigator</strong></a>
 </p>
 
 ## What I Focus On
@@ -84,7 +90,7 @@ flowchart LR
 
 ## Interactive Systems Thinking
 
-The animated lab above represents the kind of systems I like building and studying: backend telemetry flowing into anomaly detection, model inference producing confidence scores, events moving through RabbitMQ, and automated recovery actions keeping distributed services healthy.
+The 3D career navigator above is a visual way to explore my engineering profile: Spring Boot microservices, RabbitMQ, PostgreSQL, observability, AI engineering, and featured projects. It uses a microservice city metaphor with an AI interviewer that guides visitors through my backend and AI experience.
 
 ## GitHub Activity
 
