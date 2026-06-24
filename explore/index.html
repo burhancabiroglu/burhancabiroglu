@@ -162,13 +162,13 @@
       }
 
       .answer {
-        min-height: 148px;
-        margin: 10px 0 12px;
+        min-height: 112px;
+        margin: 12px 0 10px;
         padding: 14px;
         border-radius: 14px;
         background: rgba(255, 255, 255, 0.6);
         color: #233246;
-        line-height: 1.52;
+        line-height: 1.48;
         font-size: 14px;
       }
 
@@ -192,8 +192,8 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        min-height: 24px;
-        margin-top: 14px;
+        min-height: 20px;
+        margin-top: 12px;
         color: #37607b;
         font-size: 12px;
         font-weight: 760;
@@ -213,29 +213,22 @@
       }
 
       .evidence {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 7px;
+        min-height: 18px;
         margin-bottom: 12px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
       }
 
       .evidence-item {
-        display: grid;
-        grid-template-columns: 72px 1fr;
-        gap: 9px;
-        align-items: center;
-        padding: 8px 10px;
-        border: 1px solid rgba(58, 126, 185, .16);
-        border-radius: 12px;
-        background: rgba(255, 255, 255, .5);
-        color: #253448;
-        font-size: 12px;
+        display: block;
       }
 
       .evidence-item strong {
         color: #306b48;
         font-size: 11px;
         text-transform: uppercase;
+        margin-right: 6px;
       }
 
       .questions {
@@ -292,14 +285,15 @@
 
       button {
         width: 100%;
-        min-height: 42px;
+        min-height: 39px;
         border: 1px solid rgba(77, 92, 105, .18);
         border-radius: 12px;
         background: rgba(255, 255, 255, 0.72);
         color: #243245;
-        padding: 10px 12px;
+        padding: 9px 11px;
         text-align: left;
         cursor: pointer;
+        font-size: 13px;
         font-weight: 820;
       }
 
@@ -387,14 +381,9 @@
         }
 
         .answer {
-          max-height: 244px;
+          max-height: 210px;
           min-height: 118px;
           overflow: auto;
-        }
-
-        .evidence-item {
-          grid-template-columns: 58px 1fr;
-          padding: 7px 9px;
         }
 
         .questions {
@@ -455,7 +444,7 @@
           <div class="face" aria-hidden="true"><span></span></div>
           <div>
             <h2>AI Interviewer</h2>
-            <p>Choose a question. The town camera will move to the relevant district.</p>
+            <p>Ask about Burhan's backend, AI, or production work.</p>
           </div>
         </div>
         <div class="ai-status" id="ai-status"><span class="pulse"></span><span>Calibrating profile context</span></div>
@@ -467,7 +456,7 @@
         <div class="ask-box">
           <div class="example-prompts" id="example-prompts" aria-label="Example interview prompts"></div>
           <div class="ask-row">
-            <input id="custom-question" type="text" autocomplete="off" placeholder="Ask a recruiter-style question" />
+            <input id="custom-question" type="text" autocomplete="off" placeholder="Ask your own question" />
             <button id="ask-button" type="button">Ask</button>
           </div>
         </div>
@@ -591,90 +580,74 @@
       ];
 
       const questions = [
-        { label: "How strong is your Spring Boot background?", target: "spring", intent: "spring depth" },
-        { label: "What do you know about distributed systems?", target: "rabbit", intent: "distributed systems" },
-        { label: "How does AI Engineer fit your backend profile?", target: "ai", intent: "ai backend fit" },
-        { label: "What production experience do you bring?", target: "observability", intent: "production experience" },
-        { label: "Which projects should I review first?", target: "projects", intent: "project review" },
+        { label: "Spring Boot depth", target: "spring" },
+        { label: "Distributed systems", target: "rabbit" },
+        { label: "AI + backend fit", target: "ai" },
+        { label: "Production experience", target: "observability" },
+        { label: "Best projects to review", target: "projects" },
       ];
 
       const examplePrompts = [
-        "Can he design reliable RAG and async AI workflows?",
-        "How would he debug a RabbitMQ incident?",
-        "Is his Spring Boot experience production-ready?",
-        "Which project proves backend depth fastest?",
-        "How does he handle database consistency?",
+        "Can he ship RAG in production?",
+        "How would he debug a queue issue?",
+        "Which repo should I open first?",
       ];
 
       const interviewProfiles = {
         spring: {
-          status: "Scanning Spring Boot, security, messaging, and database signals",
+          status: "Looking at backend depth",
           answer:
-            "Assessment: Burhan reads as a backend engineer with a strong Spring Boot direction, not someone casually listing Java keywords. The signal is strongest around service boundaries, REST APIs, Spring Security, RabbitMQ integration, Dockerized infrastructure, and PostgreSQL-backed business workflows.\n\nWhat I would ask next in a real interview: describe one service boundary, one failure mode, and how the system recovers when RabbitMQ or a downstream service is temporarily unavailable.",
+            "I would read Burhan as a backend engineer first. The Spring Boot signal is strongest when he talks about APIs, service boundaries, security, RabbitMQ, and PostgreSQL together.\n\nThe best interview follow-up is simple: ask him to explain one service he built and what happens when part of it fails.",
           evidence: [
-            ["Core", "Java/Spring Boot microservices, REST APIs, Spring Security"],
-            ["Infra", "Docker, service discovery, PostgreSQL, RabbitMQ"],
-            ["Depth", "Focus on boundaries, reliability, and production behavior"],
+            ["Signal", "Spring Boot, APIs, security, RabbitMQ, PostgreSQL"],
           ],
         },
         gateway: {
-          status: "Checking API contract, auth, routing, and platform ownership signals",
+          status: "Checking API ownership",
           answer:
-            "Assessment: His gateway story is strongest when framed as product-facing backend ownership. The useful signal is not only routing; it is auth propagation, validation, rate limits, error shape consistency, and observability at the edge of the system.\n\nA senior reviewer should hear that he treats the gateway as a contract layer: stable enough for clients, flexible enough for services, and instrumented enough for operations.",
+            "I would keep this story practical. A gateway is not just routing; it is auth, validation, predictable errors, and clean logs in one place.\n\nFor Burhan, this is a good way to show he thinks about backend systems as something other teams actually depend on.",
           evidence: [
-            ["Contract", "Routing, validation, consistent API surface"],
-            ["Security", "Authentication and authorization propagation"],
-            ["Ops", "Edge-level logs, status codes, and traceability"],
+            ["Signal", "API contracts, auth, routing, validation, logs"],
           ],
         },
         rabbit: {
-          status: "Tracing asynchronous flows, retries, idempotency, and recovery patterns",
+          status: "Reading async system signals",
           answer:
-            "Assessment: Burhan's distributed-systems profile is credible when it leans into RabbitMQ and operational recovery. The important part is not just publishing messages; it is queue pressure, retry behavior, idempotent consumers, offline synchronization, and making async failures observable.\n\nIf I were interviewing him, I would push on duplicate delivery, poison messages, correlation IDs, and how a team knows the difference between a slow queue and a broken workflow.",
+            "This is one of his stronger areas. He should talk about RabbitMQ like a real production tool: retries, duplicate messages, stuck queues, recovery, and logs.\n\nA good interviewer will probably ask: how do you make a consumer safe if the same message arrives twice?",
           evidence: [
-            ["Messaging", "RabbitMQ communication flows and async delivery"],
-            ["Reliability", "Retries, recovery, idempotency, offline sync"],
-            ["Debuggability", "Correlation IDs and structured troubleshooting"],
+            ["Signal", "RabbitMQ, retries, recovery, idempotency, queue debugging"],
           ],
         },
         postgres: {
-          status: "Reading persistence, transaction, query, and ownership clues",
+          status: "Checking data ownership",
           answer:
-            "Assessment: The database signal is production-oriented. Burhan can present PostgreSQL and MySQL as architectural tools: schema ownership per service, transaction-heavy flows, query behavior, and data consistency choices.\n\nThe strongest interview move is to connect database decisions to service boundaries: who owns the data, what must be transactional, what can be eventual, and what gets logged when reality disagrees with the happy path.",
+            "The database story should stay close to real decisions. Who owns the data? What must be transactional? What can be eventually consistent?\n\nIf Burhan answers that way, PostgreSQL and MySQL stop sounding like stack keywords and start sounding like engineering choices.",
           evidence: [
-            ["Data", "PostgreSQL and MySQL production experience"],
-            ["Design", "Schema design and service-owned persistence"],
-            ["Tradeoffs", "Transactions, query behavior, consistency boundaries"],
+            ["Signal", "PostgreSQL, MySQL, transactions, schema ownership"],
           ],
         },
         observability: {
-          status: "Evaluating production support, CI/CD, logs, and incident response",
+          status: "Looking for production maturity",
           answer:
-            "Assessment: This is one of the best areas to emphasize for serious backend roles. Burhan's profile has the kind of production language teams care about: structured logging, CI/CD automation, RabbitMQ flows, offline sync, recovery mechanisms, and troubleshooting real systems.\n\nThe story should feel grounded: he has shipped, watched things fail, and built enough visibility to understand what happened without guessing.",
+            "This is where Burhan sounds most grounded. Logs, CI/CD, recovery paths, offline sync, and debugging RabbitMQ flows all feel like real production experience.\n\nFor backend roles, that matters a lot. It says he has seen systems after the happy path breaks.",
           evidence: [
-            ["Production", "Financial/POS-style flows and support mindset"],
-            ["Visibility", "Structured logs, dashboards, trace-friendly events"],
-            ["Delivery", "CI/CD automation and recovery mechanisms"],
+            ["Signal", "Logs, CI/CD, recovery, support, production troubleshooting"],
           ],
         },
         ai: {
-          status: "Cross-checking AI claims against backend architecture and deployment fit",
+          status: "Connecting AI to backend work",
           answer:
-            "Assessment: The AI Engineer angle works best as backend-plus-AI engineering, not as a disconnected title. Burhan should position AI as systems work: model-serving APIs, embeddings, recommendation jobs, anomaly detection, RAG pipelines, async inference, and automation that can be monitored and retried.\n\nThat makes the story believable: he is not saying 'I know AI' in the abstract; he is saying he can put AI features behind reliable APIs, queues, databases, and production workflows.",
+            "The AI angle works best when it sounds like backend engineering with AI inside it. Burhan should say: I can put RAG, embeddings, or model calls behind reliable APIs, queues, databases, and monitoring.\n\nThat feels much more believable than just saying he knows AI.",
           evidence: [
-            ["AI Systems", "Model-serving APIs, embeddings, RAG, recommendations"],
-            ["Backend Fit", "Async inference jobs behind service boundaries"],
-            ["Production", "Monitoring, retries, data flow, automation safety"],
+            ["Signal", "RAG, embeddings, model APIs, async jobs, monitoring"],
           ],
         },
         projects: {
-          status: "Ranking projects by recruiter signal, backend depth, and proof value",
+          status: "Picking the clearest proof",
           answer:
-            "Assessment: Review Ticket Microservice first if the role is Java/Spring Boot or microservices. It carries the most direct signal: service discovery, Spring Security, RabbitMQ, Docker, PostgreSQL, and modular backend thinking.\n\nThen look at Cabir CRM and Transportation Server System for delivery range: API design, full-stack implementation, business workflows, and practical production-style problem solving.",
+            "I would open Ticket Microservice first. It gives the fastest signal for Spring Boot, RabbitMQ, Docker, PostgreSQL, security, and service structure.\n\nAfter that, Cabir CRM and Transportation Server System help show that he can deliver business workflows, not only demos.",
           evidence: [
-            ["First", "Ticket Microservice for Spring Boot and distributed-system signal"],
-            ["Then", "Cabir CRM for product and full-stack delivery"],
-            ["Also", "Transportation Server System for business workflow depth"],
+            ["Signal", "Ticket Microservice first, then CRM and transportation systems"],
           ],
         },
       };
@@ -1216,12 +1189,11 @@
 
       function renderEvidence(items) {
         evidenceEl.innerHTML = "";
-        items.forEach(([label, text]) => {
-          const item = document.createElement("div");
-          item.className = "evidence-item";
-          item.innerHTML = `<strong>${label}</strong><span>${text}</span>`;
-          evidenceEl.appendChild(item);
-        });
+        const [label, text] = items[0] ?? ["Signal", "Backend, AI, and production systems"];
+        const item = document.createElement("div");
+        item.className = "evidence-item";
+        item.innerHTML = `<strong>${label}:</strong> <span>${text}</span>`;
+        evidenceEl.appendChild(item);
       }
 
       function setAiStatus(text) {
@@ -1249,7 +1221,7 @@
           } else {
             answerEl.textContent = text;
             answerEl.classList.remove("typing");
-            setAiStatus("Ready for a deeper follow-up");
+            setAiStatus("Ask me another angle");
           }
         };
         step();
@@ -1300,7 +1272,7 @@
         const question = customQuestionEl.value.trim();
         if (!question) return;
         const id = inferTargetFromQuestion(question);
-        setActive(id, { prompt: `Question interpreted as: "${question}"` });
+        setActive(id);
         customQuestionEl.value = "";
       }
 
@@ -1308,7 +1280,7 @@
         const button = document.createElement("button");
         button.textContent = question.label;
         button.dataset.target = question.target;
-        button.addEventListener("click", () => setActive(question.target, { prompt: `Interview intent: ${question.intent}` }));
+        button.addEventListener("click", () => setActive(question.target));
         questionsEl.appendChild(button);
       });
 
