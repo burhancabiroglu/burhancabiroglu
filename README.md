@@ -2,9 +2,9 @@
 
 # Burhan Cabiroglu
 
-### Backend Software Engineer | AI, Algorithms & Deep Learning | Java, Spring Boot, .NET, Microservices
+### Backend Software Engineer | Spring Boot Microservices | AI Engineer
 
-I build production backend systems where reliability matters: distributed services, financial application flows, message-driven architectures, CI/CD automation, and observability-heavy production support. Alongside backend engineering, I study and build around AI algorithms, deep learning fundamentals, model-driven workflows, recommendation logic, embeddings, and intelligent automation.
+I build production backend systems where reliability matters: Java/Spring Boot microservices, distributed services, financial application flows, message-driven architectures, CI/CD automation, and observability-heavy production support. Alongside my backend focus, I work on AI engineering patterns such as model-serving APIs, embeddings, recommendation workflows, anomaly detection, RAG pipelines, and intelligent automation.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-burhancabiroglu-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/burhancabiroglu)
 [![Email](https://img.shields.io/badge/Email-burhancabiroglu97%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:burhancabiroglu97@gmail.com)
@@ -20,12 +20,12 @@ I build production backend systems where reliability matters: distributed servic
 
 ## What I Focus On
 
-- Backend services with Java, Spring Boot, C#, .NET, Node.js, REST APIs, GraphQL, CQRS, and MediatR
-- Distributed systems with RabbitMQ, event-driven flows, offline synchronization, and recovery mechanisms
+- Java and Spring Boot microservices with REST APIs, service discovery, Spring Security, RabbitMQ, Docker, and PostgreSQL
+- Backend services with C#, .NET, Node.js, GraphQL, CQRS, MediatR, and production-oriented API design
+- Distributed systems with RabbitMQ, event-driven flows, offline synchronization, recovery mechanisms, and resilient service boundaries
 - Databases with PostgreSQL, MySQL, schema design, query optimization, and transaction-oriented workflows
 - Production delivery with Docker, Jenkins, CI/CD, Git workflows, structured logging, Serilog, and ELK
-- AI and algorithms: neural network fundamentals, embeddings, recommendation systems, anomaly detection, model evaluation, and optimization thinking
-- AI engineering: LLM-ready APIs, RAG pipelines, async AI jobs, agentic workflows, automation, and backend foundations for intelligent products
+- AI engineering with model-serving APIs, embeddings, recommendation systems, anomaly detection, RAG pipelines, async AI jobs, and agentic workflows
 
 ## Current Work
 
@@ -33,9 +33,9 @@ I am currently building production backend services with C#, .NET, PostgreSQL, M
 
 Previously, I worked on financial applications across banking, factoring, international banking, marketplace, and enterprise platforms.
 
-## AI, Algorithms & Deep Learning
+## AI Engineering
 
-I am interested in the engineering layer where backend systems and AI models meet: data pipelines, embeddings, recommendation systems, anomaly detection, model-serving APIs, and async inference workflows. My goal is to combine reliable backend architecture with algorithmic thinking and practical deep learning foundations.
+My main professional foundation is backend engineering, especially Java/Spring Boot microservices. I extend that foundation with AI engineering: data pipelines, embeddings, recommendation systems, anomaly detection, model-serving APIs, async inference workflows, and LLM/RAG integrations that can run reliably inside production systems.
 
 ## Featured Systems
 
